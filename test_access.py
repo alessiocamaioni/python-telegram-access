@@ -1,13 +1,19 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 #
-#Prova d'uso del modulo _accesstelegram.py
+#############################
+# python-telegram-bot 5.3.0 #
+#############################
+#
+# Prova d'uso del modulo _accesstelegram.py
+# 
 
 import logging
-import telegram
-from telegram import Emoji, ForceReply, InlineKeyboardButton, InlineKeyboardMarkup
+import telegram 
+from telegram import ForceReply, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler, MessageHandler, CallbackQueryHandler, Filters
 from configobj import ConfigObj
+from emoji import emojize
 
 from _accesstelegram import Check
 
@@ -136,11 +142,10 @@ def menu(bot, update):
 	else :
 		bot.sendMessage(update.message.chat_id, NO_ENTRY+" Accesso al comando non autorizzato!", parse_mode=telegram.ParseMode.HTML, reply_markup=clear_keyboard)
 	
-	
-# updater = Updater(token='154208494:AAEL7oNAP8shSshQIRIYTOfGBeaIkfpxsow')
+#### inserire token nel file di configurazione	
 updater = Updater(telegram_token)
 dispatcher = updater.dispatcher
-dispatcher.add_handler(MessageHandler([Filters.text], messaggi_in_arrivo))
+dispatcher.add_handler(MessageHandler(Filters.text, messaggi_in_arrivo))
 dispatcher.add_handler(CommandHandler("start",comando_start))
 dispatcher.add_handler(CommandHandler("menu", menu))
 dispatcher.add_handler(CommandHandler("help", menu))

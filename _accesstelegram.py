@@ -2,18 +2,26 @@
 # -*- coding: utf-8 -*-
 #
 # Classe per il controllo degli accessi verso un Bot Telegram
-#
 # V 0.8
 #
-# richiede: sudo pip install configobj
+#############################
+# python-telegram-bot 5.3.0 #
+#############################
+#
+# richiede: 
+# $ sudo pip install python-telegram-bot --upgrade
+# $ sudo pip install configobj
+# $ sudo pip install emoji
 
 import random
 import json
 import os.path
 import telegram
-from telegram import Emoji, ForceReply, InlineKeyboardButton, InlineKeyboardMarkup
+import sys, re, os, glob, time
+from telegram import ForceReply, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Updater, InlineQueryHandler, CommandHandler, MessageHandler, CallbackQueryHandler, Filters
 from configobj import ConfigObj
+from emoji import emojize
 
 class Check():
 	global log
